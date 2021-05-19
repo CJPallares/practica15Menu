@@ -1,0 +1,43 @@
+<!-- Dentro de ion-router-outlet se carga el contenido de la página que esté activa en ese momento,
+ es decir la que indique la ruta actual.
+Aquí vamos a añadir el menú, que dependiendo de la opción seleccionada cambiará la
+ruta para mostrar dentro de ion-router-oulet la página que hayamos seleccionado.-->
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item [routerDirection]="'root'" [routerLink]="'/listado'">
+              <ion-icon slot="start" [name]="'list'"></ion-icon>
+              <ion-label> Listado </ion-label>
+            </ion-item>
+            <ion-item [routerDirection]="'root'" [routerLink]="'/home'">
+              <ion-icon slot="start" [name]="'home'"></ion-icon>
+              <ion-label> Inicio </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
+<!-- Lo primero que hacemos es envolver todo en una etiqueta ion-split-pane, esto permite adaptarse a pantallas más grandes (como tabletas) y muestra el menú justo al lado de su contenido. Le asignamos la propiedad contentId=”main-content” que serà el id que le vamos a asignar a la etiqueta ion-router-outlet donde irá el contenido de la aplicación.
+
+Después tenemos ion-menu que es el componente que contiene el menú y al que asignaremos tambien el parámetro contentId=”main-content”, dentro del mismo añadimos su contenido igual que si sería una página, hemos añadido un ion-header con un toolbar y dentro el título del menú.
+
+Después tenemos un ion-content y dentro hemos creado un listado con dos items con las opciones del menú.
+
+Como vimos en el anterior capítulo routerDirection sirve para indicar la dirección de la animación.
+
+En el parámetro routerLink de cada item definimos la ruta que tenemos que cargar al pulsar en el.
+
+Observa que la ruta está entre comillas simples dentro de las comillas dobles, esto es para que lo tome como un literal en lugar de una variable.
+
+También podríamos definir una variable con un array de opciones con sus rutas y hacer un bucle para mostrar las opciones, pero para simplificar hemos creado las dos opciones a mano directamente.-->
